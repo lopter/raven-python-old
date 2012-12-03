@@ -33,7 +33,7 @@ class SentryMiddleware(object):
         self._sentry_client = client or Client(**kwargs)
         self._hide_zerorpc_frames = hide_zerorpc_frames
 
-    def inspect_error(self, task_context, exc_info):
+    def inspect_error(self, task_context, request_event, reply_event, exc_info):
         """Called when an exception has been raised in the code run by ZeroRPC"""
 
         # Hide the zerorpc internal frames for readability, frames to hide are:
